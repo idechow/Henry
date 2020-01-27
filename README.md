@@ -8,12 +8,12 @@ To start the game, the player must first choose their setting: practice, single,
 ### Functionality & MVP
 
 With this Henry simulator, users will be able to:
-*Select which game style to play in (practice or multiplayer) 
-*Start or reset the game board
-*Play sounds through the Henry button
-*Select squares that play sounds and light up if matched
-*Win the game by matching 4 sounds in a line
+* Select which game style to play in (practice or multiplayer)
+* Start or reset the game board
+* Play sounds through the Henry button
+* Select squares that play sounds and light up if matched
+* Win the game by matching 4 sounds in a line
  
 In addition, this project will include:
-*An About modal describing the background and rules of the game
-*A production README
+* An About modal describing the background and rules of the game
+* A production README
