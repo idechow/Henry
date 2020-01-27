@@ -26,12 +26,17 @@ This app will consist of a single screen with game board, game controls, and nav
 ### Architecture and Technologies
 
 This project will be implemented with the following technologies:
+
 * JavaScript for overall structure,
 * HTML/CSS for rendering,
 * Webpack to bundle scripts,
 * Canvas.js also for overall structure,
 * ___ to deal with sound clips.
+
 In addition to the entry file, there will be three main scripts involved in this project:
-Board.js will handle the logic for determining matched vs. unmatched squares as well as sound randomization. 
-Game.js will handle the logic behind what defines a turn as well as the win conditions.
-Cell.js will handle the logic and state behind each of the matchable sound-aligned squares. 
+
+`Board.js` will handle the logic for determining matched vs. unmatched squares as well as sound randomization. 
+
+`Game.js` will handle the logic behind what defines a turn as well as the win conditions.
+
+`Cell.js` will handle the logic and state behind each of the matchable sound-aligned squares. 
