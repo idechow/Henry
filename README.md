@@ -17,3 +17,7 @@ With this Henry simulator, users will be able to:
 In addition, this project will include:
 * An About modal describing the background and rules of the game
 * A production README
+
+### Wireframes
+This app will consist of a single screen with game board, game controls, and nav links to the Github, my LinkedIn, and the About modal. Game controls will include Start/Reset, Henry, and grid cell buttons. On the left, three clickable shapes will be used to choose type of play: practice (player 1 plays all turns), multiplayer (players 1 and 2 switch between turns), or single-player (player 1 plays against an AI, Bonus Feature). On the right, there will be three (or more) clickable visually interesting color schemes to toggle between (Bonus Feature). 
+
