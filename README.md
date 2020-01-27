@@ -22,3 +22,16 @@ In addition, this project will include:
 This app will consist of a single screen with game board, game controls, and nav links to the Github, my LinkedIn, and the About modal. Game controls will include Start/Reset, Henry, and grid cell buttons. On the left, three clickable shapes will be used to choose type of play: practice (player 1 plays all turns), multiplayer (players 1 and 2 switch between turns), or single-player (player 1 plays against an AI, Bonus Feature). On the right, there will be three (or more) clickable visually interesting color schemes to toggle between (Bonus Feature). 
 
 ![alt text](https://github.com/idechow/Henry/blob/master/Screen%20Shot%202020-01-27%20at%2010.31.10%20AM.png)
+
+### Architecture and Technologies
+
+This project will be implemented with the following technologies:
+* JavaScript for overall structure,
+* HTML/CSS for rendering,
+* Webpack to bundle scripts,
+* Canvas.js also for overall structure,
+* ___ to deal with sound clips.
+In addition to the entry file, there will be three main scripts involved in this project:
+Board.js will handle the logic for determining matched vs. unmatched squares as well as sound randomization. 
+Game.js will handle the logic behind what defines a turn as well as the win conditions.
+Cell.js will handle the logic and state behind each of the matchable sound-aligned squares. 
