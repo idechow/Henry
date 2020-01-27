@@ -40,3 +40,29 @@ In addition to the entry file, there will be three main scripts involved in this
 `Game.js` will handle the logic behind what defines a turn as well as the win conditions.
 
 `Cell.js` will handle the logic and state behind each of the matchable sound-aligned squares. 
+
+### Implementation Timeline
+
+**Day 1:** Setup all necessary Node modules, including getting webpack up and running. Write a basic entry file and outline for three main scripts, above. Goals for the day:
+* Gather sound clips
+* Figure out how to implement sound clips. 
+ 
+**Day 2:** Dedicate this day to building out `cell.js` and `board.js.` Including appropriate CSS. Goals for the day:
+* Complete the `cell.js` module.
+* Make each cell clickable and render random sound
+* Make Henry button cycle through random noises that have not already been matched
+ 
+**Day 3:** Build out `game.js`. Goals for the day:
+* Make sure multiplayer settings work properly 
+* Make sure practice settings work properly
+* Make sure game understands win criteria 
+ 
+**Day 4:** Finish up all loose ends. Install the controls for the user to interact with the game. Style the frontend, making it polished and professional. Goals for the day:
+* If time permits, AI player for single player gameplay function
+* If time permits, format multiple color schemes
+
+### Bonus features
+
+* Add single-player game, which would include an AI opponent
+* Add multiple choices for starting states that are interesting
+
