@@ -1,0 +1,27 @@
+
+body {
+   background-color: black;
+}
+
+section {
+   background-color: #172cc7;
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   width: 500px;
+   height: 500px;
+   border-radius: 20px;
+   display: flex;
+   justify-content: center;
+}
+
+h1 {
+   color: #913286;
+   text-align: center;
+   padding: 15px;
+   border-radius: 40px/24px;
+   background-color: silver;
+   width: 20%;
+   height: 28px;
+}
