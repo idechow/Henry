@@ -14,6 +14,8 @@ section {
    border-radius: 20px;
    display: flex;
    justify-content: center;
+   align-items: center;
+   box-sizing: border-box;
 }
 
 h1 {
@@ -24,4 +26,48 @@ h1 {
    background-color: silver;
    width: 20%;
    height: 28px;
+}
+
+figure {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: row;
+   flex-wrap: wrap;
+   /* margin: 30px auto; */
+   width: 90%;
+   height: 90%;
+   /* border: 5px solid black; */
+   box-sizing: border-box;
+}
+
+/* .row {
+   display: flex;
+  
+   flex-direction: row;
+} */
+
+.sound-cell {
+  width: 80px;
+  height: 80px;
+  /* border: 5px solid black; */
+  background: #ff8e01;
+  cursor: pointer;
+  margin: 20px 10px;
+  border-radius: 20%;
+  /* justify-content: center;
+   align-items: center; */
+}
+
+.henry-button{
+   position: absolute;
+   top: 15px;
+   width: 20%;
+   height: 30px;
+   font-size: 100%;
+   font-family: inherit;
+   border: 0;
+   padding: 0;
+   outline: none;
+   border-radius: 40px/24px;
 }

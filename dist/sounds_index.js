@@ -12,7 +12,7 @@ const Sounds = [
    'Chicken.m4a',
    'Chomp.m4a',
    'Co_co_clock.m4a',
-   'Coo_moo.m4a',
+   'Cow_moo.m4a',
    'Ding_ding_dong.m4a',
    'Door_bell.m4a',
    'Drar_drar.m4a',

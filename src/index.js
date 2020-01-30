@@ -1,13 +1,16 @@
-import Game from ("./game");
-import Board from ("./board");
-import Cell from ("./cell");
+import Game from '../logic/game';
+import View from './henry_view';
+import Cell from '../logic/cell'
+// const Cell = require('../logic/cell')
 
-console.log("blah-blah")
 
-document.addEventListener('DOMContentLoaded', () => {
+// console.log("blah-blah")
 
-})
+// document.addEventListener('DOMContentLoaded', () => {
 
-window.Game = Game;
-window.Board = Board;
-window.Cell = Cell;
+// });
+
+window.Game = new Game(); 
+// window.Game = Game;
+// window.Board = Board;
+// window.Cell = Cell;
