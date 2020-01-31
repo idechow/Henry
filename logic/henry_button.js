@@ -1,30 +1,20 @@
-
-class Cell {
-   constructor(src, i, j) {
+class Henry {
+   constructor(src) {
       this.audio = this.sound(src);
-      this.match = false;
-      this.pos = [i, j]; 
+      this.clicked = false;
+      
    }
 
-   sound(src){
+   sound(src) {
       let sound = document.createElement("audio");
       sound.src = src;
       sound.setAttribute("type", "audio/mp4")
       sound.setAttribute("preload", "auto");
       sound.setAttribute("controls", "none");
       sound.style.display = "none";
-      return sound; 
+      return sound;
    }
 
 }
 
-export default Cell;
-
-
-// document.body.appendChild(sound);
-// this.play = () => {
-//    sound.play();
-// }
-// this.stop = () => {
-//    sound.pause();
-// }
+export default Henry;
