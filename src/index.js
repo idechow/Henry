@@ -6,9 +6,17 @@ import Cell from '../logic/cell'
 
 // console.log("blah-blah")
 
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-// });
+   startButton.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      // instructions.classList.add('hidden');
+      // goBack.classList.add('hidden');
+      // gameStory.classList.remove('animate-expand');
+      // playBtn.classList.remove('animate-expand');
+   })
+
+});
 
 window.Game = new Game(); 
 // window.Game = Game;

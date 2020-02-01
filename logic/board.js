@@ -30,7 +30,7 @@ class Board {
 
    makeGridView(){
       let e = document.getElementById('grid'); 
-
+      console.log(this.allNoises)
       for (let i=0; i<4; i++){
          let col = document.createElement("div");
          col.className = "col";
@@ -47,7 +47,9 @@ class Board {
                      cell.className = "match";
                      cellSound.match = true;
                      this.grid[i][j] = true;
-                     console.log(this.grid);
+                     this.allNoises.splice(this.allNoises.indexOf(this.currentSound), 1);
+                     console.log(this.allNoises);
+                     console.log(this.winner());
                   }
                }
                
@@ -72,10 +74,10 @@ class Board {
 
       henry.addEventListener('click', () => {
          if(!henrySound.clicked){
-            henrySound.audio.src = `../dist/sounds_library/${this.random(this.allNoises)}`;
+            this.currentSound = this.random(this.allNoises)
+            henrySound.audio.src = `../dist/sounds_library/${this.currentSound}`;
             henrySound.audio.play();
             henrySound.clicked = true;
-            // console.log(this.grid);
          }
       }); 
       return henrySound;
@@ -86,53 +88,44 @@ class Board {
       return item;
    }
 
-   // winner() {
-   //    const posSeqs = [
-   //       // horizontals
-   //       [[0, 0], [0, 1], [0, 2], [0, 3]],
-   //       [[1, 0], [1, 1], [1, 2], [1, 3]],
-   //       [[2, 0], [2, 1], [2, 2], [2, 3]],
-   //       [[3, 0], [3, 1], [3, 2], [3, 3]],
-   //       // verticals
-   //       [[0, 0], [1, 0], [2, 0], [3, 0]],
-   //       [[0, 1], [1, 1], [2, 1], [3, 1]],
-   //       [[0, 2], [1, 2], [2, 2], [3, 2]],
-   //       [[0, 3], [1, 3], [2, 3], [3, 3]],
-   //       // diagonals
-   //       [[0, 0], [1, 1], [2, 2], [3, 3]],
-   //       [[3, 0], [1, 2], [2, 1], [0, 3]]
-   //    ];
+   winner() {
+      const posSeqs = [
+         // horizontals
+         [[0, 0], [0, 1], [0, 2], [0, 3]],
+         [[1, 0], [1, 1], [1, 2], [1, 3]],
+         [[2, 0], [2, 1], [2, 2], [2, 3]],
+         [[3, 0], [3, 1], [3, 2], [3, 3]],
+         // verticals
+         [[0, 0], [1, 0], [2, 0], [3, 0]],
+         [[0, 1], [1, 1], [2, 1], [3, 1]],
+         [[0, 2], [1, 2], [2, 2], [3, 2]],
+         [[0, 3], [1, 3], [2, 3], [3, 3]],
+         // diagonals
+         [[0, 0], [1, 1], [2, 2], [3, 3]],
+         [[3, 0], [1, 2], [2, 1], [0, 3]]
+      ];
 
-   //    for (let i = 0; i < posSeqs.length; i++) {
-   //       const winner = this.winnerHelper(posSeqs[i]);
-   //       if (winner != null) {
-   //          return winner;
-   //       }
-   //    }
+      for (let i = 0; i < posSeqs.length; i++) {
+         console.log(posSeqs[i]);
+         const winner = this.winnerHelper(posSeqs[i]);
+         if (winner) {
+            console.log("we have a winner")
+            return true;
+         }
+      }
+      return null;
+   }
 
-   //    return null;
-   // }
-
-   // winnerHelper(posSeq) {
-   //    for (let markIdx = 0; markIdx < Board.marks.length; markIdx++) {
-   //       const targetMark = Board.marks[markIdx];
-   //       let winner = true;
-   //       for (let posIdx = 0; posIdx < 3; posIdx++) {
-   //          const pos = posSeq[posIdx];
-   //          const mark = this.grid[pos[0]][pos[1]];
-
-   //          if (mark != targetMark) {
-   //             winner = false;
-   //          }
-   //       }
-
-   //       if (winner) {
-   //          return targetMark;
-   //       }
-   //    }
-
-   //    return null;
-   // }
+   winnerHelper(posSeq) {
+      for (let posIdx = 0; posIdx < 4; posIdx++) {
+         const pos = posSeq[posIdx];
+         console.log(pos);
+         const match = this.grid[pos[0]][pos[1]];
+         console.log(match);
+         if (!match) return false;
+      }
+      return true;
+   }
 
    static makeGrid() {
       const grid = [];
@@ -143,7 +136,6 @@ class Board {
             grid[i].push(false);
          }
       }
-      // console.log(grid);
       return grid;
    }
 
