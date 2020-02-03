@@ -1,10 +1,5 @@
 import Game from '../logic/game';
-import View from './henry_view';
-import Cell from '../logic/cell'
-// const Cell = require('../logic/cell')
 
-
-// console.log("blah-blah")
 
 document.addEventListener('DOMContentLoaded', () => {
    const grid = document.getElementsByClassName('grid')[0];

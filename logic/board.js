@@ -29,7 +29,6 @@ class Board {
 
 
    makeGridView(el){
-      console.log(this.allNoises)
       for (let i=0; i<4; i++){
          let col = document.createElement("div");
          col.className = "col";
@@ -49,8 +48,6 @@ class Board {
                      cellSound.match = true;
                      this.grid[i][j] = true;
                      this.allNoises.splice(this.allNoises.indexOf(this.currentSound), 1);
-                     console.log(this.allNoises);
-                     console.log(this.winner());
                      if (this.winner()){
                         let shell = document.getElementsByClassName('grid')[0];
                         let won = document.getElementsByClassName('won')[0];
@@ -114,10 +111,8 @@ class Board {
       ];
 
       for (let i = 0; i < posSeqs.length; i++) {
-         console.log(posSeqs[i]);
          const winner = this.winnerHelper(posSeqs[i]);
          if (winner) {
-            console.log("we have a winner")
             return true;
          }
       }
@@ -127,9 +122,7 @@ class Board {
    winnerHelper(posSeq) {
       for (let posIdx = 0; posIdx < 4; posIdx++) {
          const pos = posSeq[posIdx];
-         console.log(pos);
          const match = this.grid[pos[0]][pos[1]];
-         console.log(match);
          if (!match) return false;
       }
       return true;
