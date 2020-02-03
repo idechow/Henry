@@ -1,0 +1,25 @@
+{
+  "name": "Henry",
+  "version": "1.0.0",
+  "description": "Henry is a memory game for kids",
+  "main": "index.js",
+  "dependencies": {
+    "webpack-cli": "^3.3.10",
+    "webpack": "^4.41.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "webpack --watch --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/idechow/Henry.git"
+  },
+  "keywords": [],
+  "author": "Ian Dechow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/idechow/Henry/issues"
+  },
+  "homepage": "https://github.com/idechow/Henry#readme"
+}
