@@ -3,12 +3,29 @@ import Henry from "./henry_button";
 import Sounds from "../dist/sounds_index";
 
 class Board {
-   constructor(){
+   constructor(el){
       this.grid = Board.makeGrid();
       this.noises = this.selectSounds();
       this.allNoises = this.noises.slice(0); 
-      this.gridView = this.makeGridView();
+      this.gridView = this.makeGridView(el);
       this.bigButton = this.henryButton();
+      this.reset = this.start();
+   }
+
+   start() {
+      let e = document.getElementById('shell');
+
+      let start = document.createElement("button");
+      let startSound = new Henry('../dist/shuffle_sound/Shuffle.m4a');
+      start.appendChild(startSound.audio)
+      start.textContent = "Reset";
+      start.className = "reset-button";
+      e.appendChild(start);
+
+      start.addEventListener('click', () => {
+            startSound.audio.play();
+      });
+      return startSound;
    }
 
    shuffle(sounds) {
@@ -28,8 +45,8 @@ class Board {
    }
 
 
-   makeGridView(){
-      let e = document.getElementById('grid'); 
+   makeGridView(el){
+      // let e = document.getElementById('grid'); 
       console.log(this.allNoises)
       for (let i=0; i<4; i++){
          let col = document.createElement("div");
@@ -58,7 +75,7 @@ class Board {
             
             col.appendChild(cell);
          }
-         e.appendChild(col);
+         el.appendChild(col);
       }
    }
 

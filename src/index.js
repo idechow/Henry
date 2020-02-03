@@ -7,18 +7,42 @@ import Cell from '../logic/cell'
 // console.log("blah-blah")
 
 document.addEventListener('DOMContentLoaded', () => {
+   const grid = document.getElementsByClassName('grid')[0];
+   const playBtn = document.getElementById('play-btn');
+   const menu = document.getElementsByClassName('start-menu')[0];
+   const rulesBtn = document.getElementById('rules-btn');
+   const rules = document.getElementsByClassName('rules-menu')[0];
+   const closeBtn = document.getElementById('close-btn');
 
-   startButton.addEventListener('click', () => {
+   playBtn.addEventListener('click', () => {
+      const game = new Game(grid)
       menu.classList.add('hidden');
-      // instructions.classList.add('hidden');
-      // goBack.classList.add('hidden');
-      // gameStory.classList.remove('animate-expand');
-      // playBtn.classList.remove('animate-expand');
+      grid.classList.remove('hidden');
    })
+
+   rulesBtn.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      rules.classList.remove('hidden');
+   })
+
+   closeBtn.addEventListener('click', () => {
+      rules.classList.add('hidden');
+      menu.classList.remove('hidden');
+   })
+
+
+
+   // startButton.addEventListener('click', () => {
+   //    menu.classList.add('hidden');
+   //    // instructions.classList.add('hidden');
+   //    // goBack.classList.add('hidden');
+   //    // gameStory.classList.remove('animate-expand');
+   //    // playBtn.classList.remove('animate-expand');
+   // })
 
 });
 
-window.Game = new Game(); 
+// window.Game = new Game(); 
 // window.Game = Game;
 // window.Board = Board;
 // window.Cell = Cell;

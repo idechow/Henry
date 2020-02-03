@@ -2,9 +2,11 @@ import Board from "./board";
 import Sounds from "../dist/sounds_index";
 
 class Game {
-   constructor() {
-      this.board = new Board(); 
+   constructor(el) {
+      this.board = new Board(el); 
    }
+
+   
 
    
   

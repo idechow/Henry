@@ -1,45 +1,166 @@
 
-body {
-   background: url('./space.jpg');
+html, body {
+    margin: 0;
+    height: 100%;
 }
 
-section {
+
+body {
+   background: url('./stars.jpg') no-repeat center center fixed; 
+   /* background: url('./space.jpg');  */
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+}
+
+.start-menu {
    /* background-color: #172cc7; */
    background-color: transparent;
-   position: absolute;
+   position: relative;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
-   width: 500px;
-   height: 500px;
+   width: 100%;
+   height: 100%;
    border-radius: 20px;
    display: flex;
    justify-content: center;
    align-items: center;
    box-sizing: border-box;
-   -webkit-perspective: 400;
-   /* -webkit-perspective: 25em; */
 }
+
+
+.title {
+   -webkit-perspective: 400;
+   display: flex;
+   justify-content: center;
+   margin-top: 35px;
+}
+/* #913286; */
 
 h1 {
-   color: #913286;
-   text-align: center;
-   padding: 15px;
-   border-radius: 40px/24px;
-   background-color: silver;
-   width: 20%;
+   color: #b12062;
+   color: #ab1e66;
+   letter-spacing: 0.1em;
+   font-size: 11rem;
+   padding: 2px;
    height: 28px;
+   display: inline;
+   font-family: 'Bungee Inline', cursive;
+   text-shadow: 2px 2px #4c1149;
 }
 
-figure {
+.menu {
+   z-index: 1;
+   /* background-color: rgba(0, 0, 0, .8); */
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 40%;
+   width: 75%;
+   box-sizing: border-box;
+   border-radius: 150px/115px;
+}
+
+.menu > li {
+   background-color: #bcd8db;
+   text-align: center;
+   padding: 25px;
+   font-family: 'Montserrat', sans-serif;
+   margin: 10px;
+   width: 35%;
+   max-width: 160px;
+   border-radius: 5px;
+   font-weight: 700;
+   cursor: pointer;
+   font-size: 22px;
+   -webkit-box-shadow: 6px 6px 4px #4479a3, 0px 3px 21px rgba(0,0,0,0.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5)
+}
+
+.rules-menu {
+   background-color: transparent;
+   position: absolute;
+   left: 50%;
+   top: 440px;
+   transform: translate(-50%, -50%);
+   width: 75%;
+   max-width: 800px;
+   height: 65%;
+   border-radius: 20px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   box-sizing: border-box;
+}
+
+.rules {
+   z-index: 1;
+   background-color: rgba(0, 0, 0, .8);
+   display: block;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   max-height: 100%;
+   overflow: scroll;
+   width: 100%;
+   box-sizing: border-box;
+   border-radius: 20px;
+   font-family: 'Montserrat', sans-serif;
+   color: white;
+   line-height: 1.4;
+}
+
+.rules > h3 {
+   font-size: 20px;
+   margin: 11px 0;
+   text-align: center;
+}
+
+.rules > p {
+   padding: 0 25px;
+}
+
+.rules > ol {
+   padding: 0px 25px;
+   list-style-type: decimal;
+   line-height: 2.2;
+   margin: 12px 0 12px 20px;
+}
+
+.rules > ol > li {
+   padding-left: 1em;
+}
+
+#close-btn {
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 700;
+    background-color: #bcd8db;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    outline: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.grid {
    display: flex;
    justify-content: center;
    align-items: center;
    flex-direction: row;
    flex-wrap: wrap;
    /* margin: 30px auto; */
-   width: 90%;
-   height: 90%;
+   width: 85%;
+   height: 85%;
    /* border: 5px solid black; */
    box-sizing: border-box;
 }
@@ -64,6 +185,19 @@ figure {
    /* -webkit-box-shadow: 0px 6px 0px #2b638f; */
    -webkit-box-shadow: 0px 6px 0px #2b638f, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5);
 }
+
+/* .sound-cell:after {
+   content: '';
+   position: absolute;
+   bottom: -20px;
+   left: -10px;
+   height: 20%;
+   width: 100%;
+   background: #2b638f;
+   transform: 0.5s;
+   transform: rotate(0deg) skewY(-45deg);
+   border-radius: 20%;
+} */
 
 .henry-button{
    position: absolute;
@@ -99,3 +233,15 @@ figure {
 .hidden {
     display: none;
 }
+
+footer{
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   height: 50px;
+   width: 100%;
+}
+
+/* font-family: 'Bungee Inline', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Montserrat', sans-serif; */

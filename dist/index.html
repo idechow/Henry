@@ -7,20 +7,57 @@
    <meta charset="UTF-8">
    <link rel="shortcut icon" type="image/png" href="./Tiger.png" />
    <title>Henry</title>
+   <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat|Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./reset.css">
    <link rel="stylesheet" href="./henry.css">
+   <script type="application/javascript" src="./main.js"></script>
 </head>
 
 <body>
-   <section id="shell">
-      <!-- <ul class='menu not-game'>
-         <li id='start-btn'>Play</li><br>
-      </ul> -->
-
-      <figure id="grid"></figure>
-
-      <script type="application/javascript" src="./main.js"></script>
+   <tag class="title">
+      <h1 id="1">H</h1>
+      <h1 id="2">E</h1>
+      <h1 id="3">N</h1>
+      <h1 id="4">R</h1>
+      <h1 id="5">Y</H1>
+   </tag>
+   <section class='start-menu'>
+      <ul class='menu'>
+         <li id='play-btn'>PLAY</li>
+         <li id='rules-btn'>ABOUT</li>
+      </ul>
    </section>
+   <section class='rules-menu hidden'>
+      <article class='rules'>
+         <h3>About the Game</h3>
+         <p class='description'>
+            Henry is an auditory memory game, first released by Tiger Electronics 
+            in 1996 as a handheld game console. Henry is designed to challenge your 
+            memorization abilities with seventy-five unique sounds. 
+            <br>
+            <br>
+            Press Play to shuffle songs and 16 sounds will load onto the game board. Press the Henry 
+            button to play a sound and attempt to match it to a cell on the grid. 
+            You win by matching four sounds in a row, horizontally, vertically, or 
+            diagonally. It's harder than it looks!
+         </p>
+         
+         <ol type="1">
+            <li>Press Henry to play a sound</li>
+            <li>Match the sound on the grid</li>
+            <li>Find four in a line</li>
+            <li>Press reset to start a new game</li>
+         </ol>
+         <button id="close-btn">Back to Menu</button>
+      </article>
+   </section>
+   <section id="shell">
+      <figure class='grid hidden'></figure>
+   </section>
+   
+   <footer></footer>
 </body>
+
+   
 
 </html>
