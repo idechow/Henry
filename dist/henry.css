@@ -176,8 +176,12 @@ h1 {
    flex-direction: row;
    flex-wrap: wrap;
    /* margin: 30px auto; */
-   width: 85%;
-   height: 85%;
+   width: 60%;
+   min-width: 500px;
+   max-width: 500px;
+   height: 60%;
+   min-height: 500px;
+   max-height: 500px;
    /* border: 5px solid black; */
    box-sizing: border-box;
 }
@@ -213,21 +217,25 @@ h1 {
 } */
 
 .figButton{
-   position: absolute;
-   width: 17%;
-   height: 65px;
+   width: 40px;
+   height: 204px;
+   word-wrap: break-word;
+   /* width: 17%;
+   height: 65px; */
    font-size: 2rem;
    font-family: inherit;
    border: 0;
-   padding: 0;
+   padding: 15px;
    outline: none;
-   border-radius: 80px/30px;
+   border-radius: 40px/130px;
    color: #831d7e;
    font-weight: 700;
    /* background-color: #bcd8db; */
    background-color: #93c5eb; 
    cursor: pointer;
    font-family: 'Bungee Inline', cursive;
+   box-sizing: content-box;
+  
 }
 
 .glow{
@@ -235,11 +243,12 @@ h1 {
 }
 
 .henry {
-   top: 95px;
+   /* top: 95px; */
+   order: -1;
 }
 
 .reset {
-   bottom: 95px;
+   /* bottom: 95px; */
 }
 
 .match {
@@ -262,6 +271,8 @@ h1 {
 .won {
    font-family: 'Montserrat', sans-serif;
    font-size: 100px;
+   padding: 0px 30px;
+   text-align: center;
    color: white;
    text-shadow: rgb(85, 232, 252) 0px -4px 20px;
 }

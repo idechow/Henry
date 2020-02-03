@@ -23,6 +23,8 @@ class Game {
          won.classList.add('hidden');
          let old = document.getElementsByClassName('grid')[0];
          old.innerHTML = "";
+         let henry = document.getElementsByClassName('henry')[0];
+         henry.parentNode.removeChild(henry);
          this.board = new Board(el); 
          let shell = document.getElementsByClassName('grid')[0];
          shell.classList.remove('hidden');
