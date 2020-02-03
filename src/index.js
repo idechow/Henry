@@ -13,11 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
    const rulesBtn = document.getElementById('rules-btn');
    const rules = document.getElementsByClassName('rules-menu')[0];
    const closeBtn = document.getElementById('close-btn');
+   const startNoise = document.getElementById('start-noise');
+   const tag = document.getElementsByClassName('title')[0];
+   const shell = document.getElementsByClassName('shell')[0];
 
    playBtn.addEventListener('click', () => {
       const game = new Game(grid)
       menu.classList.add('hidden');
+      shell.classList.remove('hidden');
       grid.classList.remove('hidden');
+      tag.classList.add('hidden');
+      startNoise.play();
+
    })
 
    rulesBtn.addEventListener('click', () => {
@@ -29,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
       rules.classList.add('hidden');
       menu.classList.remove('hidden');
    })
-
 
 
    // startButton.addEventListener('click', () => {

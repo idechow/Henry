@@ -9,23 +9,6 @@ class Board {
       this.allNoises = this.noises.slice(0); 
       this.gridView = this.makeGridView(el);
       this.bigButton = this.henryButton();
-      this.reset = this.start();
-   }
-
-   start() {
-      let e = document.getElementById('shell');
-
-      let start = document.createElement("button");
-      let startSound = new Henry('../dist/shuffle_sound/Shuffle.m4a');
-      start.appendChild(startSound.audio)
-      start.textContent = "Reset";
-      start.className = "reset-button";
-      e.appendChild(start);
-
-      start.addEventListener('click', () => {
-            startSound.audio.play();
-      });
-      return startSound;
    }
 
    shuffle(sounds) {
@@ -46,20 +29,21 @@ class Board {
 
 
    makeGridView(el){
-      // let e = document.getElementById('grid'); 
       console.log(this.allNoises)
       for (let i=0; i<4; i++){
          let col = document.createElement("div");
          col.className = "col";
          for (let j=0; j<4; j++){
             let cell = document.createElement("div");
-            let cellSound = new Cell(`../dist/sounds_library/${this.noises.shift()}`, i, j);
+            let cellSound = new Cell(`./dist/sounds_library/${this.noises.shift()}`, i, j);
             cell.appendChild(cellSound.audio) 
             cell.className = "sound-cell";
-
+            
             cell.addEventListener('click', () => {
                if (this.bigButton.clicked && !cellSound.match){
                   cellSound.audio.play();
+                  let henry = document.getElementsByClassName('henry')[0];
+                  henry.classList.add('glow');
                   if (cellSound.audio.src === this.bigButton.audio.src) {
                      cell.className = "match";
                      cellSound.match = true;
@@ -67,6 +51,12 @@ class Board {
                      this.allNoises.splice(this.allNoises.indexOf(this.currentSound), 1);
                      console.log(this.allNoises);
                      console.log(this.winner());
+                     if (this.winner()){
+                        let shell = document.getElementsByClassName('grid')[0];
+                        let won = document.getElementsByClassName('won')[0];
+                        shell.classList.add('hidden');
+                        won.classList.remove('hidden');
+                     }
                   }
                }
                
@@ -80,21 +70,22 @@ class Board {
    }
 
    henryButton(){
-      let e = document.getElementById('shell'); 
+      let e = document.getElementsByClassName('shell')[0]; 
 
       let henry = document.createElement("button");
       let henrySound = new Henry("");
       henry.appendChild(henrySound.audio)
       henry.textContent = "Henry";
-      henry.className = "henry-button";
+      henry.className = "henry figButton glow";
       e.appendChild(henry);
 
       henry.addEventListener('click', () => {
          if(!henrySound.clicked){
             this.currentSound = this.random(this.allNoises)
-            henrySound.audio.src = `../dist/sounds_library/${this.currentSound}`;
+            henrySound.audio.src = `./dist/sounds_library/${this.currentSound}`;
             henrySound.audio.play();
             henrySound.clicked = true;
+            henry.classList.remove('glow');
          }
       }); 
       return henrySound;

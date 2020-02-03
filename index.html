@@ -5,12 +5,12 @@
 
 <head>
    <meta charset="UTF-8">
-   <link rel="shortcut icon" type="image/png" href="./Tiger.png" />
+   <link rel="shortcut icon" type="image/png" href="./dist/Tiger.png" />
    <title>Henry</title>
    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat|Roboto&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="./reset.css">
-   <link rel="stylesheet" href="./henry.css">
-   <script type="application/javascript" src="./main.js"></script>
+   <link rel="stylesheet" href="./dist/reset.css">
+   <link rel="stylesheet" href="./dist/henry.css">
+   <script type="application/javascript" src="./dist/main.js"></script>
 </head>
 
 <body>
@@ -23,7 +23,14 @@
    </tag>
    <section class='start-menu'>
       <ul class='menu'>
-         <li id='play-btn'>PLAY</li>
+         <li id='play-btn'>PLAY
+            <audio 
+               id="start-noise"
+               src="./dist/shuffle_sound/Shuffle.m4a" 
+               type="audio/mp4" preload="auto" controls="none" 
+               style="display: none;">
+            </audio>
+         </li>
          <li id='rules-btn'>ABOUT</li>
       </ul>
    </section>
@@ -51,8 +58,9 @@
          <button id="close-btn">Back to Menu</button>
       </article>
    </section>
-   <section id="shell">
+   <section class="shell hidden">
       <figure class='grid hidden'></figure>
+      <aside class='won hidden'>You're a winner!</aside>
    </section>
    
    <footer></footer>
