@@ -10,19 +10,32 @@
    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Montserrat|Roboto&display=swap" rel="stylesheet">
    <link rel="stylesheet" href="./dist/reset.css">
    <link rel="stylesheet" href="./dist/henry.css">
+   <script src="https://kit.fontawesome.com/4978d83d65.js" crossorigin="anonymous"></script>
    <script type="application/javascript" src="./dist/main.js"></script>
 </head>
 
 <body>
-   <tag class="title">
+   <tag class="title start">
       <h1 id="1">H</h1>
       <h1 id="2">E</h1>
       <h1 id="3">N</h1>
       <h1 id="4">R</h1>
       <h1 id="5">Y</H1>
    </tag>
-   <section class='start-menu'>
+   <div class="play-pause">
+      <!-- <button onclick="document.getElementById('player').play()">Play</button>
+      <button onclick="document.getElementById('player').pause()">Pause</button> -->
+      <button class='music' onclick="document.getElementById('player').muted=!document.getElementById('player').muted">
+         <span class='mute hidden'><i class="fas fa-volume-mute"></i></span>
+         <span class='unmute hidden'><i class="fas fa-volume-up"></i></span>
+      </button>
+   </div>
+   <section class='start-menu hidden'>
       <ul class='menu'>
+         <audio id="player" loop 
+            src="http://trekcore.com/tos/audio/themes/EndCredits.mp3"
+            type="audio/mp3" preload="auto" >
+         </audio>
          <li id='play-btn'>PLAY
             <audio 
                id="start-noise"
@@ -32,6 +45,14 @@
             </audio>
          </li>
          <li id='rules-btn'>ABOUT</li>
+         <li class='info-btn'>
+            <a class="links one" href="https://github.com/idechow/Henry">
+               <i class="fab fa-github"></i>
+            </a>
+            <a class="links two" href="https://www.linkedin.com/in/ian-franklin-dechow/">
+               <i class="fab fa-linkedin-in"></i>
+            </a>
+         </li>
       </ul>
    </section>
    <section class='rules-menu hidden'>
@@ -62,8 +83,7 @@
       <figure class='grid hidden'></figure>
       <aside class='won hidden'>You're a winner!</aside>
    </section>
-   
-   <footer></footer>
+   <!-- <footer></footer> -->
 </body>
 
    
