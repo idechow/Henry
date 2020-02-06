@@ -25,12 +25,15 @@ document.addEventListener('DOMContentLoaded', () => {
       unmute.classList.add('hidden');
    })
 
-   tag.addEventListener('click', () => {
+   const entry = () => {
       tag.classList.remove('start');
       menu.classList.remove('hidden');
       mute.classList.remove('hidden');
       player.play();
-   })
+      tag.removeEventListener('click', entry);
+   }
+
+   tag.addEventListener('click', entry);
 
    playBtn.addEventListener('click', () => {
       const game = new Game(grid)

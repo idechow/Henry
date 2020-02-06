@@ -36,13 +36,17 @@ class Board {
             let cell = document.createElement("div");
             let cellSound = new Cell(`./dist/sounds_library/${this.noises.shift()}`, i, j);
             cell.appendChild(cellSound.audio) 
-            cell.className = "sound-cell";
+            cell.className = "sound-cell default";
             
             cell.addEventListener('click', () => {
                if (this.bigButton.clicked && !cellSound.match){
-                  cellSound.audio.play();
                   let henry = document.getElementsByClassName('henry')[0];
-                  henry.classList.add('glow');
+                  let grid = document.getElementsByClassName('sound-cell');
+                  cellSound.audio.play();
+                  cell.classList.add('visual')
+                  for (let cell of grid) {
+                     cell.classList.add('default');
+                  }
                   if (cellSound.audio.src === this.bigButton.audio.src) {
                      cell.className = "match";
                      cellSound.match = true;
@@ -54,6 +58,10 @@ class Board {
                         shell.classList.add('hidden');
                         won.classList.remove('hidden');
                      }
+                  }
+                  cellSound.audio.onended = () => {
+                     henry.classList.add('glow');
+                     cell.classList.remove('visual')
                   }
                }
                
@@ -78,11 +86,17 @@ class Board {
 
       henry.addEventListener('click', () => {
          if(!henrySound.clicked){
+            henry.classList.remove('glow');
             this.currentSound = this.random(this.allNoises)
             henrySound.audio.src = `./dist/sounds_library/${this.currentSound}`;
             henrySound.audio.play();
-            henrySound.clicked = true;
-            henry.classList.remove('glow');
+            henrySound.audio.onended = () => {
+               henrySound.clicked = true;
+               let grid = document.getElementsByClassName('sound-cell');
+               for (let cell of grid){
+                  cell.classList.remove('default');
+               }
+            }
          }
       }); 
       return henrySound;
