@@ -15,6 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
    const mute = document.getElementsByClassName('mute')[0];
    const unmute = document.getElementsByClassName('unmute')[0];
 
+   const home = document.getElementsByClassName('home')[0];
+   
+
+   home.addEventListener('click', () => {
+      let henry = document.getElementsByClassName('henry')[0];
+      let reset = document.getElementsByClassName('reset')[0];
+      let won = document.getElementsByClassName('won')[0];
+
+      grid.innerHTML = "";
+      henry.parentNode.removeChild(henry);
+      reset.parentNode.removeChild(reset);
+      won.classList.add('hidden');
+      shell.classList.add('hidden');
+      menu.classList.remove('hidden');
+   })
+
    mute.addEventListener('click', () => {
       mute.classList.add('hidden');
       unmute.classList.remove('hidden');

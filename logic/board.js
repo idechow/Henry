@@ -52,16 +52,16 @@ class Board {
                      cellSound.match = true;
                      this.grid[i][j] = true;
                      this.allNoises.splice(this.allNoises.indexOf(this.currentSound), 1);
-                     if (this.winner()){
+                  }
+                  cellSound.audio.onended = () => {
+                     henry.classList.add('glow');
+                     cell.classList.remove('visual')
+                     if (this.winner()) {
                         let shell = document.getElementsByClassName('grid')[0];
                         let won = document.getElementsByClassName('won')[0];
                         shell.classList.add('hidden');
                         won.classList.remove('hidden');
                      }
-                  }
-                  cellSound.audio.onended = () => {
-                     henry.classList.add('glow');
-                     cell.classList.remove('visual')
                   }
                }
                

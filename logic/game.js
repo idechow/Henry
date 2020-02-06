@@ -14,7 +14,7 @@ class Game {
       let startSound = new Henry('./dist/shuffle_sound/Shuffle.m4a');
       start.appendChild(startSound.audio)
       start.textContent = "Reset";
-      start.className = "figButton reset";
+      start.className = "reset figButton";
       e.appendChild(start);
 
       start.addEventListener('click', () => {
