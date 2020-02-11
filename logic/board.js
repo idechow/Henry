@@ -9,6 +9,7 @@ class Board {
       this.allNoises = this.noises.slice(0); 
       this.gridView = this.makeGridView(el);
       this.bigButton = this.henryButton();
+      this.posSeqs = this.winSeqs();
    }
 
    shuffle(sounds) {
@@ -58,14 +59,27 @@ class Board {
                      henry.disabled = false;   
                      cell.classList.remove('visual')
                      if (this.winner()) {
+                        console.log(this.winCondition)
+                        this.winGrid(this.winCondition);
+
+                        let endSound = document.getElementById('start-noise')
+                        endSound.play()
+
                         let shell = document.getElementById('grid');
-                        let won = document.getElementsByClassName('won')[0];
                         let fake = document.getElementById('fake-henry');
+                        let win = document.getElementById('win');
 
                         shell.classList.add('hidden');
-                        won.classList.remove('hidden');
                         henry.classList.add('hidden');
                         fake.classList.remove('hidden');
+                        win.classList.remove('hidden');
+
+                        endSound.onended = () => {
+                           let won = document.getElementsByClassName('won')[0];
+                           won.classList.remove('hidden');
+                           win.classList.add('hidden');
+                           win.innerHTML = "";
+                        }
                      }
                   }
                }
@@ -77,30 +91,22 @@ class Board {
          }
          el.appendChild(col);
       }
+      console.log(el);
+      return el;
    }
 
    henryButton(){
-
       let e = document.getElementsByClassName('shell')[0];
       let henry = document.createElement("button");
-   
-      // let henry = document.getElementsByClassName('henry')[0];
       let henrySound = new Henry("");
-      // henrySound.audio.id = 'henry-sounds';
-      // henry.appendChild(henrySound.audio);
       henry.textContent = "Henry";
-
       henry.id = 'henry';
       henry.className = "henry figButton glow";
       e.appendChild(henry);
-   
       henry.addEventListener('click', () => {
-         // let henrySound = new Henry("");
          if(!henrySound.clicked){
             henry.classList.remove('glow');
-            console.log(this.currentSound)
             this.currentSound = this.random(this.allNoises)
-            console.log(this.currentSound)
             henrySound.audio.src = `./dist/sounds_library/${this.currentSound}`;
             henry.appendChild(henrySound.audio);
             henrySound.audio.play();
@@ -122,8 +128,38 @@ class Board {
       return item;
    }
 
-   winner() {
-      const posSeqs = [
+   winGrid(winArr) {
+      let winGrid = Board.makeGrid()
+
+      winArr.forEach(el => {
+         let row = this.posSeqs[el];
+         for (let x = 0; x < row.length; x++) {
+            let posX = row[x][0];
+            let posY = row[x][1];
+            winGrid[posX][posY] = true
+         }
+      })
+      console.log(winGrid);
+
+      let win = document.getElementById('win');
+      for (let i = 0; i < 4; i++) {
+         let col = document.createElement("div");
+         col.className = "col";
+         for (let j = 0; j < 4; j++) {
+            let cell = document.createElement("div");
+            if (winGrid[i][j] === true ){
+               cell.className = `sound-cell default win`;
+            } else {
+               cell.className = `sound-cell default`;
+            }
+            col.appendChild(cell);
+         }
+         win.appendChild(col);
+      }
+   }
+
+   winSeqs() {
+      const sequences = [
          // horizontals
          [[0, 0], [0, 1], [0, 2], [0, 3]],
          [[1, 0], [1, 1], [1, 2], [1, 3]],
@@ -138,14 +174,19 @@ class Board {
          [[0, 0], [1, 1], [2, 2], [3, 3]],
          [[3, 0], [1, 2], [2, 1], [0, 3]]
       ];
+      return sequences;
+   }
 
-      for (let i = 0; i < posSeqs.length; i++) {
-         const winner = this.winnerHelper(posSeqs[i]);
+   winner() {
+      const wins = [];
+      for (let i = 0; i < this.posSeqs.length; i++) {
+         const winner = this.winnerHelper(this.posSeqs[i]);
          if (winner) {
-            return true;
+            wins.push(i);
          }
       }
-      return null;
+      this.winCondition = wins;
+      if (wins.length > 0) { return true } else { return null };
    }
 
    winnerHelper(posSeq) {

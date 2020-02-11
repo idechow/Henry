@@ -408,6 +408,17 @@ h1 {
    text-shadow: rgb(85, 232, 252) 0px -4px 20px;
 }
 
+.win {
+   animation: win 500ms infinite ease-in;
+   background-color: #ffff93;
+}
+
+@keyframes win {
+   0% { background-color: transparent}
+   50% { background-color: #ffff93}
+   100% { background-color: transparent}
+}
+
 .hidden {
     display: none;
 }
