@@ -245,12 +245,73 @@ h1 {
    cursor: default !important;
 }
 
+.shuf {
+  
+}
+
+/* .cell1, .cell3 {
+   animation: flash 400ms infinite;
+   animation-delay: 0ms;
+}
+
+.cell2, .cell0 {
+   animation: flash 400ms infinite;
+   animation-delay: 200ms;
+} */
+
+.cell-3 {
+   animation: flash 490ms infinite;
+   animation-delay: 0ms;
+}
+
+.cell-2 {
+   animation: flash 490ms infinite;
+   animation-delay: 70ms;
+}
+
+.cell-1 {
+   animation: flash 490ms infinite;
+   animation-delay: 140ms;
+}
+
+.cell0 {
+   animation: flash 490ms infinite;
+   animation-delay: 210ms;
+}
+
+.cell1 {
+   animation: flash 490ms infinite;
+   animation-delay: 280ms;
+}
+
+.cell2 {
+   animation: flash 490ms infinite;
+   animation-delay: 350ms;
+}
+
+.cell3 {
+   animation: flash 490ms infinite;
+   animation-delay: 420ms;
+}
+
+@keyframes flash {
+  0% { background-color: #ab1e66}
+  /* 50% { background-color: #4c1149} */
+   /* 50% { background-color: #fdfe03} */
+  50% { background-color: #bf00ff}
+  100% { background-color: #ab1e66}
+}
+
+/* #ff00f2   bright pink   #33ff00  bright green  #00ffe5 bright blue*/
+
 .visual{
    /* background: transparent ;
    -webkit-box-shadow: 0px 0px 25px #ffffff, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5); */
-   background: #2b638f !important;
-    -webkit-box-shadow: 0px 0px 25px #ab1e66, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5) !important;
+   background: #ffff93 !important;
+    -webkit-box-shadow: 0px 0px 25px #ff7800, 0px 3px 15px rgba(0,0,0,.4), inset 0px 1px 0px rgba(255,255,255,.3), inset 0px 0px 3px rgba(255,255,255,.5) !important;
 }
+
+/* #2b638f darker blue   #ab1e66 pink outline*/
 
 /* .row {
    display: flex;
@@ -285,7 +346,7 @@ h1 {
 .figButton{
    width: 40px;
    height: 204px;
-   min-height: 204px;
+   /* min-height: 204px; */
    word-wrap: break-word;
    /* width: 17%;
    height: 65px; */
@@ -298,7 +359,7 @@ h1 {
    color: #831d7e;
    font-weight: 700;
    /* background-color: #bcd8db; */
-   background-color: #93c5eb; 
+   background-color: #93c5eb;
    /* cursor: pointer; */
    font-family: 'Bungee Inline', cursive;
    box-sizing: content-box;
@@ -369,6 +430,7 @@ h1 {
 .fas {
    font-size: 40px;
    color: #ab1e66;
+   cursor: pointer;
 }
 
 .home {

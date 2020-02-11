@@ -2,33 +2,38 @@ import Game from '../logic/game';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-   const grid = document.getElementsByClassName('grid')[0];
+   const grid = document.getElementById('grid');
    const playBtn = document.getElementById('play-btn');
    const menu = document.getElementsByClassName('start-menu')[0];
    const rulesBtn = document.getElementById('rules-btn');
    const rules = document.getElementsByClassName('rules-menu')[0];
    const closeBtn = document.getElementById('close-btn');
-   const startNoise = document.getElementById('start-noise');
+   // const startNoise = document.getElementById('start-noise');
    const tag = document.getElementsByClassName('title')[0];
    const shell = document.getElementsByClassName('shell')[0];
    const player = document.getElementById('player');
    const mute = document.getElementsByClassName('mute')[0];
    const unmute = document.getElementsByClassName('unmute')[0];
+   const ani = document.getElementById('anima');
 
    const home = document.getElementsByClassName('home')[0];
    
 
    home.addEventListener('click', () => {
-      let henry = document.getElementsByClassName('henry')[0];
+      let henry = document.getElementById('henry');
+      let fake = document.getElementById('fake-henry');
       let reset = document.getElementsByClassName('reset')[0];
       let won = document.getElementsByClassName('won')[0];
 
       grid.innerHTML = "";
+      ani.innerHTML = "";
       henry.parentNode.removeChild(henry);
+      fake.parentNode.removeChild(fake);
       reset.parentNode.removeChild(reset);
       won.classList.add('hidden');
       shell.classList.add('hidden');
       menu.classList.remove('hidden');
+      grid.classList.add('hidden')
    })
 
    mute.addEventListener('click', () => {
@@ -55,8 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const game = new Game(grid)
       menu.classList.add('hidden');
       shell.classList.remove('hidden');
-      grid.classList.remove('hidden');
-      startNoise.play();
+      ani.classList.remove('hidden');
    })
 
    rulesBtn.addEventListener('click', () => {

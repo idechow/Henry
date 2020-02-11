@@ -40,7 +40,7 @@ class Board {
             
             cell.addEventListener('click', () => {
                if (this.bigButton.clicked && !cellSound.match){
-                  let henry = document.getElementsByClassName('henry')[0];
+                  let henry = document.getElementById('henry');
                   let grid = document.getElementsByClassName('sound-cell');
                   cellSound.audio.play();
                   cell.classList.add('visual')
@@ -55,12 +55,17 @@ class Board {
                   }
                   cellSound.audio.onended = () => {
                      henry.classList.add('glow');
+                     henry.disabled = false;   
                      cell.classList.remove('visual')
                      if (this.winner()) {
-                        let shell = document.getElementsByClassName('grid')[0];
+                        let shell = document.getElementById('grid');
                         let won = document.getElementsByClassName('won')[0];
+                        let fake = document.getElementById('fake-henry');
+
                         shell.classList.add('hidden');
                         won.classList.remove('hidden');
+                        henry.classList.add('hidden');
+                        fake.classList.remove('hidden');
                      }
                   }
                }
@@ -75,21 +80,31 @@ class Board {
    }
 
    henryButton(){
-      let e = document.getElementsByClassName('shell')[0]; 
 
+      let e = document.getElementsByClassName('shell')[0];
       let henry = document.createElement("button");
+   
+      // let henry = document.getElementsByClassName('henry')[0];
       let henrySound = new Henry("");
-      henry.appendChild(henrySound.audio)
+      // henrySound.audio.id = 'henry-sounds';
+      // henry.appendChild(henrySound.audio);
       henry.textContent = "Henry";
+
+      henry.id = 'henry';
       henry.className = "henry figButton glow";
       e.appendChild(henry);
-
+   
       henry.addEventListener('click', () => {
+         // let henrySound = new Henry("");
          if(!henrySound.clicked){
             henry.classList.remove('glow');
+            console.log(this.currentSound)
             this.currentSound = this.random(this.allNoises)
+            console.log(this.currentSound)
             henrySound.audio.src = `./dist/sounds_library/${this.currentSound}`;
+            henry.appendChild(henrySound.audio);
             henrySound.audio.play();
+            henry.disabled = true;
             henrySound.audio.onended = () => {
                henrySound.clicked = true;
                let grid = document.getElementsByClassName('sound-cell');

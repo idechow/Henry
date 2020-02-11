@@ -2,7 +2,6 @@ class Henry {
    constructor(src) {
       this.audio = this.sound(src);
       this.clicked = false;
-      
    }
 
    sound(src) {
