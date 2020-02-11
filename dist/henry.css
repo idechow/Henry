@@ -260,41 +260,41 @@ h1 {
 } */
 
 .cell-3 {
-   animation: flash 490ms infinite;
-   animation-delay: 0ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 0ms;
 }
 
 .cell-2 {
-   animation: flash 490ms infinite;
-   animation-delay: 70ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 70ms;
 }
 
 .cell-1 {
-   animation: flash 490ms infinite;
-   animation-delay: 140ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 140ms;
 }
 
 .cell0 {
-   animation: flash 490ms infinite;
-   animation-delay: 210ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 210ms;
 }
 
 .cell1 {
-   animation: flash 490ms infinite;
-   animation-delay: 280ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 280ms;
 }
 
 .cell2 {
-   animation: flash 490ms infinite;
+   -webkit-animation: flash 490ms infinite;
    animation-delay: 350ms;
 }
 
 .cell3 {
-   animation: flash 490ms infinite;
-   animation-delay: 420ms;
+   -webkit-animation: flash 490ms infinite;
+   -webkit-animation-delay: 420ms;
 }
 
-@keyframes flash {
+@-webkit-keyframes flash {
   0% { background-color: #ab1e66}
   /* 50% { background-color: #4c1149} */
    /* 50% { background-color: #fdfe03} */
@@ -409,11 +409,11 @@ h1 {
 }
 
 .win {
-   animation: win 500ms infinite ease-in;
+   -webkit-animation: win 500ms infinite ease-in;
    background-color: #ffff93;
 }
 
-@keyframes win {
+@-webkit-keyframes win {
    0% { background-color: transparent}
    50% { background-color: #ffff93}
    100% { background-color: transparent}
