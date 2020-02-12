@@ -4,18 +4,22 @@ import Game from '../logic/game';
 document.addEventListener('DOMContentLoaded', () => {
    const grid = document.getElementById('grid');
    const playBtn = document.getElementById('play-btn');
-   const menu = document.getElementsByClassName('start-menu')[0];
+   const norm = document.getElementById('norm');
+   const easy = document.getElementById('easy');
+   const baby = document.getElementById('baby');
+   const levelsBtn = document.getElementById('levels-btn');
+   const levels = document.getElementById('levels-menu');
+   const menu = document.getElementById('start-menu');
    const rulesBtn = document.getElementById('rules-btn');
-   const rules = document.getElementsByClassName('rules-menu')[0];
-   const closeBtn = document.getElementById('close-btn');
-   // const startNoise = document.getElementById('start-noise');
+   const rules = document.getElementById('rules-menu');
+   const closeBtn1 = document.getElementById('close-btn1');
+   const closeBtn2 = document.getElementById('close-btn2');
    const tag = document.getElementsByClassName('title')[0];
    const shell = document.getElementsByClassName('shell')[0];
    const player = document.getElementById('player');
    const mute = document.getElementsByClassName('mute')[0];
    const unmute = document.getElementsByClassName('unmute')[0];
    const ani = document.getElementById('anima');
-
    const home = document.getElementsByClassName('home')[0];
    
 
@@ -34,16 +38,20 @@ document.addEventListener('DOMContentLoaded', () => {
       shell.classList.add('hidden');
       menu.classList.remove('hidden');
       grid.classList.add('hidden')
+      home.disabled = true;
+      home.classList.add('default');
    })
 
    mute.addEventListener('click', () => {
       mute.classList.add('hidden');
       unmute.classList.remove('hidden');
+      player.muted = true
    })
 
    unmute.addEventListener('click', () => {
       mute.classList.remove('hidden');
       unmute.classList.add('hidden');
+      player.muted = false
    })
 
    const entry = () => {
@@ -56,20 +64,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
    tag.addEventListener('click', entry);
 
-   playBtn.addEventListener('click', () => {
-      const game = new Game(grid)
+   const play = (level) => {
+      new Game(grid, level)
       menu.classList.add('hidden');
       shell.classList.remove('hidden');
       ani.classList.remove('hidden');
-   })
+      mute.click();
+   }
+
+   let level = 4;
+
+   baby.addEventListener('click', () => { 
+      level=2;
+      baby.classList.add('select');
+      easy.classList.remove('select');
+      norm.classList.remove('select');
+   });
+
+   easy.addEventListener('click', () => { 
+      level=3;
+      easy.classList.add('select');
+      baby.classList.remove('select');
+      norm.classList.remove('select');
+   });
+
+   norm.addEventListener('click', () => {
+      level=4;
+      norm.classList.add('select');
+      baby.classList.remove('select');
+      easy.classList.remove('select');
+   });
+
+   playBtn.addEventListener('click', () => { play(level) });
+   
 
    rulesBtn.addEventListener('click', () => {
       menu.classList.add('hidden');
       rules.classList.remove('hidden');
    })
 
-   closeBtn.addEventListener('click', () => {
+   levelsBtn.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      levels.classList.remove('hidden');
+   })
+
+   closeBtn1.addEventListener('click', () => {
       rules.classList.add('hidden');
+      menu.classList.remove('hidden');
+   })
+
+   closeBtn2.addEventListener('click', () => {
+      levels.classList.add('hidden');
       menu.classList.remove('hidden');
    })
 

@@ -3,13 +3,13 @@ import Henry from "./henry_button";
 import Sounds from "../dist/sounds_index";
 
 class Board {
-   constructor(el){
-      this.grid = Board.makeGrid();
-      this.noises = this.selectSounds();
+   constructor(el, size){
+      this.grid = Board.makeGrid(size);
+      this.noises = this.selectSounds(size);
       this.allNoises = this.noises.slice(0); 
-      this.gridView = this.makeGridView(el);
+      this.gridView = this.makeGridView(el, size);
       this.bigButton = this.henryButton();
-      this.posSeqs = this.winSeqs();
+      this.posSeqs = this.winSeqs(size);
    }
 
    shuffle(sounds) {
@@ -23,17 +23,17 @@ class Board {
    return sounds;
    }
 
-   selectSounds() {
-      const setSounds = this.shuffle(Sounds).slice(0, 16)
+   selectSounds(size) {
+      const setSounds = this.shuffle(Sounds).slice(0, size*size)
       return setSounds;
    }
 
 
-   makeGridView(el){
-      for (let i=0; i<4; i++){
+   makeGridView(el, size){
+      for (let i=0; i<size; i++){
          let col = document.createElement("div");
          col.className = "col";
-         for (let j=0; j<4; j++){
+         for (let j=0; j<size; j++){
             let cell = document.createElement("div");
             let cellSound = new Cell(`./dist/sounds_library/${this.noises.shift()}`, i, j);
             cell.appendChild(cellSound.audio) 
@@ -58,9 +58,8 @@ class Board {
                      henry.classList.add('glow');
                      henry.disabled = false;   
                      cell.classList.remove('visual')
-                     if (this.winner()) {
-                        console.log(this.winCondition)
-                        this.winGrid(this.winCondition);
+                     if (this.winner(size)) {
+                        this.winGrid(this.winCondition, size);
 
                         let endSound = document.getElementById('start-noise')
                         endSound.play()
@@ -68,7 +67,10 @@ class Board {
                         let shell = document.getElementById('grid');
                         let fake = document.getElementById('fake-henry');
                         let win = document.getElementById('win');
-
+                        let home = document.getElementsByClassName('home')[0];
+                        
+                        home.disabled = true;
+                        home.classList.add('default');
                         shell.classList.add('hidden');
                         henry.classList.add('hidden');
                         fake.classList.remove('hidden');
@@ -79,6 +81,8 @@ class Board {
                            won.classList.remove('hidden');
                            win.classList.add('hidden');
                            win.innerHTML = "";
+                           home.disabled = false;
+                           home.classList.remove('default');
                         }
                      }
                   }
@@ -91,7 +95,6 @@ class Board {
          }
          el.appendChild(col);
       }
-      console.log(el);
       return el;
    }
 
@@ -128,8 +131,8 @@ class Board {
       return item;
    }
 
-   winGrid(winArr) {
-      let winGrid = Board.makeGrid()
+   winGrid(winArr, size) {
+      let winGrid = Board.makeGrid(size)
 
       winArr.forEach(el => {
          let row = this.posSeqs[el];
@@ -139,13 +142,12 @@ class Board {
             winGrid[posX][posY] = true
          }
       })
-      console.log(winGrid);
 
       let win = document.getElementById('win');
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < size; i++) {
          let col = document.createElement("div");
          col.className = "col";
-         for (let j = 0; j < 4; j++) {
+         for (let j = 0; j < size; j++) {
             let cell = document.createElement("div");
             if (winGrid[i][j] === true ){
                cell.className = `sound-cell default win`;
@@ -158,29 +160,34 @@ class Board {
       }
    }
 
-   winSeqs() {
-      const sequences = [
-         // horizontals
-         [[0, 0], [0, 1], [0, 2], [0, 3]],
-         [[1, 0], [1, 1], [1, 2], [1, 3]],
-         [[2, 0], [2, 1], [2, 2], [2, 3]],
-         [[3, 0], [3, 1], [3, 2], [3, 3]],
-         // verticals
-         [[0, 0], [1, 0], [2, 0], [3, 0]],
-         [[0, 1], [1, 1], [2, 1], [3, 1]],
-         [[0, 2], [1, 2], [2, 2], [3, 2]],
-         [[0, 3], [1, 3], [2, 3], [3, 3]],
-         // diagonals
-         [[0, 0], [1, 1], [2, 2], [3, 3]],
-         [[3, 0], [1, 2], [2, 1], [0, 3]]
-      ];
+   winSeqs(size) {
+      let sequences = [];
+
+      let dia_1 = [];
+      let dia_2 = [];
+      // horizontal & verticals & diagonals
+      for (let i = 0; i < size; i++){
+         let hor = [];
+         let ver = [];
+         for (let j = 0; j < size; j++){
+            hor.push([i, j]);
+            ver.push([j, i]);
+            if(i === j) dia_1.push([i, j]);
+            if(i+j === size-1) dia_2.push([i, j]);
+         }
+         sequences.push(hor);
+         sequences.push(ver);
+      }
+      sequences.push(dia_1);
+      sequences.push(dia_2);
+
       return sequences;
    }
 
-   winner() {
+   winner(size) {
       const wins = [];
       for (let i = 0; i < this.posSeqs.length; i++) {
-         const winner = this.winnerHelper(this.posSeqs[i]);
+         const winner = this.winnerHelper(this.posSeqs[i], size);
          if (winner) {
             wins.push(i);
          }
@@ -189,8 +196,8 @@ class Board {
       if (wins.length > 0) { return true } else { return null };
    }
 
-   winnerHelper(posSeq) {
-      for (let posIdx = 0; posIdx < 4; posIdx++) {
+   winnerHelper(posSeq, size) {
+      for (let posIdx = 0; posIdx < size; posIdx++) {
          const pos = posSeq[posIdx];
          const match = this.grid[pos[0]][pos[1]];
          if (!match) return false;
@@ -198,12 +205,12 @@ class Board {
       return true;
    }
 
-   static makeGrid() {
+   static makeGrid(size) {
       const grid = [];
 
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < size; i++) {
          grid.push([]);
-         for (let j = 0; j < 4; j++) {
+         for (let j = 0; j < size; j++) {
             grid[i].push(false);
          }
       }
@@ -213,3 +220,20 @@ class Board {
 }
 
 export default Board;
+
+
+// const sequences = [
+//    // horizontals
+//    [[0, 0], [0, 1], [0, 2], [0, 3]],
+//    [[1, 0], [1, 1], [1, 2], [1, 3]],
+//    [[2, 0], [2, 1], [2, 2], [2, 3]],
+//    [[3, 0], [3, 1], [3, 2], [3, 3]],
+//    // verticals
+//    [[0, 0], [1, 0], [2, 0], [3, 0]],
+//    [[0, 1], [1, 1], [2, 1], [3, 1]],
+//    [[0, 2], [1, 2], [2, 2], [3, 2]],
+//    [[0, 3], [1, 3], [2, 3], [3, 3]],
+//    // diagonals
+//    [[0, 0], [1, 1], [2, 2], [3, 3]],
+//    [[3, 0], [1, 2], [2, 1], [0, 3]]
+// ];

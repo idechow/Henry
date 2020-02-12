@@ -2,12 +2,12 @@ import Board from "./board";
 import Henry from './henry_button';
 
 class Game {
-   constructor(el) {
-      this.reset = this.start(el);
-      this.animationGrid = this.makeAnimationGrid(el)
+   constructor(el, size) {
+      this.reset = this.start(el, size);
+      this.animationGrid = this.makeAnimationGrid(el, size)
    }
 
-   start(el) {
+   start(el, size) {
       let e = document.getElementsByClassName('shell')[0];
 
       let start = document.createElement("button");
@@ -34,31 +34,38 @@ class Game {
          let fake = document.getElementById('fake-henry');
          fake.classList.remove('hidden');
       
+         const home = document.getElementsByClassName('home')[0];
+         home.disabled = true;
+         home.classList.add('default');
 
          start.classList.add('default');
          start.disabled = true;
 
          startSound.audio.onended = () => {
+            home.disabled = false;
+            home.classList.remove('default');
             old.classList.remove('hidden');
             ani.classList.add('hidden');
             start.classList.remove('default');
             start.disabled = false;
             fake.classList.add('hidden');
-            this.board = new Board(el);
+            this.board = new Board(el, size);
+
          }
       });
       return startSound;
    }
 
-   makeAnimationGrid(el) {
+   makeAnimationGrid(el, size) {
       const reset = document.getElementsByClassName('reset')[0];
       const startNoise = document.getElementById('start-noise');
+      const home = document.getElementsByClassName('home')[0];
       startNoise.play()
       let ani = document.getElementById('anima');
-      for (let i = 0; i < 4; i++) {
+      for (let i = 0; i < size; i++) {
          let col = document.createElement("div");
          col.className = "col";
-         for (let j = 0; j < 4; j++) {
+         for (let j = 0; j < size; j++) {
             let cell = document.createElement("div");
             cell.className = `sound-cell default shuf cell${i-j}`;
             col.appendChild(cell);
@@ -75,12 +82,14 @@ class Game {
       e.appendChild(henry);
 
       startNoise.onended = () => { 
-         this.board = new Board(el); 
+         this.board = new Board(el, size); 
          el.classList.remove('hidden');
          ani.classList.add('hidden');
          reset.disabled = false;
          reset.classList.remove('default');
          henry.classList.add('hidden');
+         home.disabled = false;
+         home.classList.remove('default');
       }
    }
   

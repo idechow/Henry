@@ -23,14 +23,12 @@
       <h1 id="5">Y</H1>
    </tag>
    <div class="play-pause">
-      <!-- <button onclick="document.getElementById('player').play()">Play</button>
-      <button onclick="document.getElementById('player').pause()">Pause</button> -->
-      <button class='music' onclick="document.getElementById('player').muted=!document.getElementById('player').muted">
+      <button class='music'>
          <span class='mute hidden'><i class="fas fa-volume-up"></i></span>
          <span class='unmute hidden'><i class="fas fa-volume-mute"></i></span>
       </button>
    </div>
-   <section class='start-menu hidden'>
+   <section id='start-menu' class='start-menu hidden'>
       <ul class='menu'>
          <audio id="player" loop 
             src="./dist/shuffle_sound/EndCredits.mp3"
@@ -44,6 +42,7 @@
                style="display: none;">
             </audio>
          </li>
+         <li id='levels-btn'>LEVELS</li>
          <li id='rules-btn'>ABOUT</li>
          <li class='info-btn'>
             <a class="links one" href="https://github.com/idechow/Henry" target="_blank">
@@ -55,7 +54,7 @@
          </li>
       </ul>
    </section>
-   <section class='rules-menu hidden'>
+   <section id='rules-menu' class='rules-menu hidden'>
       <article class='rules'>
          <h3>About the Game</h3>
          <p class='description'>
@@ -76,11 +75,22 @@
             <li>Find four in a line</li>
             <li>Press reset to start a new game</li>
          </ol>
-         <button id="close-btn">Back to Menu</button>
+         <button id="close-btn1" class="close-btn">Back to Menu</button>
+      </article>
+   </section>
+   <section id='levels-menu' class='rules-menu hidden'>
+      <article class='rules'>
+         <h3>Choose the Dificulty</h3>
+         <div class='btn-wrap'>
+            <button id='baby' class="level-btn">Baby</button>
+            <button id='easy' class="level-btn">Easy</button>
+            <button id='norm' class="level-btn select">Standard</button>
+         </div>
+         <button id="close-btn2" class="close-btn">Back to Menu</button>
       </article>
    </section>
    <section class="shell hidden">
-      <button class='home'>Quit</button>
+      <button class='home default' disabled=true>Quit</button>
       <!-- <button class="henry figButton">Henry</button> -->
       <figure id="grid" class='grid hidden default'></figure>
       <figure id="anima" class='grid shuffle'></figure>
