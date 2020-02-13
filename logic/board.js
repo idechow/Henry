@@ -61,7 +61,7 @@ class Board {
                      if (this.winner(size)) {
                         this.winGrid(this.winCondition, size);
 
-                        let endSound = document.getElementById('start-noise')
+                        let endSound = document.getElementById('end-noise')
                         endSound.play()
 
                         let shell = document.getElementById('grid');

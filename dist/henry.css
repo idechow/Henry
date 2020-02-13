@@ -391,7 +391,7 @@ h1 {
    /* cursor: pointer; */
    font-family: 'Bungee Inline', cursive;
    box-sizing: content-box;
-  
+   line-height: 1.2;
 }
 
 .glow{
