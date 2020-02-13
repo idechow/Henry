@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
       grid.classList.add('hidden')
       home.disabled = true;
       home.classList.add('default');
+      player.currentTime = 0;
+      unmute.click();
    })
 
    mute.addEventListener('click', () => {
