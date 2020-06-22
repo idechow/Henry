@@ -1,5 +1,8 @@
 # Henry: a children's game
-## JS Project Proposal: Henry game simulator
+## Javascript Project Proposal: Henry game simulator
+
+[Live Site](https://idechow.github.io/Henry/)
+
 ### Background
 Henry is a memory game using sound instead of images. The original game is on a 4x4 grid and has the option for practice, single, and multi-person play. Each cell on the grid corresponds with a randomized sound. When the game is in play, the player plays the next sound in the queue and attempts to locate that same sound on the grid. When a matching sound is found, the cell lights up. The game ends when a player matches 4 sounds in a line, either horizontal, vertical, or diagonal.
 
